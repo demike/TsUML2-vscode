@@ -53,6 +53,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "tsuml2": "^0.13.0"
+    "tsuml2": "^0.14.0"
   }
 }
