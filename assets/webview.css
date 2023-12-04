@@ -1,0 +1,43 @@
+h1 {
+    font-size: 3rem;
+}
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    height:100%;
+    padding: 0;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%
+}
+
+.zoom-container {
+    position: absolute;
+    right: 2rem;
+    bottom: 1.5rem;
+}
+
+.zomm-slider {
+    width: 8rem;
+    height: 2rem;
+}
+
+.zoom-slider-label {
+    vertical-align: top;
+}
+
+.diagram-wrapper {
+
+    width:100%;
+    height:100%;
+    overflow:scroll;
+}
+

@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
-import * as tsuml2 from 'tsuml2';
 import { ClassDiagramRegistry } from './class-diagram-registry';
 export class TsUML2Extension {
-    private classDiagramRegistry = new ClassDiagramRegistry();
+    private classDiagramRegistry: ClassDiagramRegistry;
     constructor(private readonly context: vscode.ExtensionContext) {
+        this.classDiagramRegistry = new ClassDiagramRegistry(context);
     }
 
 
-    public showClassDiagram(uri: vscode.Uri) {
+    public async showClassDiagram(uri: vscode.Uri) {
     
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
@@ -15,12 +15,11 @@ export class TsUML2Extension {
         let classDiagram = this.classDiagramRegistry.getClassDiagram(uri);
         if(!classDiagram) {
             classDiagram = this.classDiagramRegistry.createClassDiagram(uri);
-            classDiagram.generate();
-            classDiagram.show();
-            vscode.window.showInformationMessage('Class diagram already exists');
-            return;
+            classDiagram.show(); // show loading screen
+            const svg = await classDiagram.generate();
+            classDiagram.show(svg); // show the generated diagram
         } else {
-            classDiagram.show();
+            classDiagram.reveal();
         }
 }
 }
