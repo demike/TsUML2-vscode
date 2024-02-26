@@ -25,6 +25,13 @@
           "command": "tsuml2-vscode.showClassDiagram",
           "group": "navigation"
         }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == typescript",
+          "command": "tsuml2-vscode.showClassDiagram",
+          "group": "navigation"
+        }
       ]
     },
     "configuration": {
