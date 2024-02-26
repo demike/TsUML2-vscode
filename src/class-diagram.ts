@@ -9,15 +9,14 @@ export class ClassDiagram {
     private onDisposeCallback: () => void;
     private panel?: vscode.WebviewPanel;
     private assetsPath: vscode.Uri;
-    private tsuml2Settings = new TsUML2Settings();
+    private tsuml2Settings: TsUML2Settings;
     fileSystemWatcher?: vscode.FileSystemWatcher;
     //private fileSystemWatcher: vscode.FileSystemWatcher;
-    constructor(options: {uri: vscode.Uri, onDispose: () => void, assetsPath: vscode.Uri}) {
+    constructor(options: {uri: vscode.Uri, onDispose: () => void, assetsPath: vscode.Uri, tsuml2Settings: TsUML2Settings}) {
         this.uri = options.uri;
         this.onDisposeCallback = options.onDispose;
         this.assetsPath = options.assetsPath;
-
-        this.tsuml2Settings.tsconfig = undefined as any;
+        this.tsuml2Settings = options.tsuml2Settings;
 
         // this.fileSystemWatcher = vscode.workspace.createFileSystemWatcher(this.uri.fsPath, true, false, false);
         // this.fileSystemWatcher.onDidChange
@@ -30,7 +29,7 @@ export class ClassDiagram {
             this.setupFileSystemWatcher(this.tsuml2Settings.glob);
         }
 
-        const declarations = tsuml2.parseProject(this.tsuml2Settings.tsconfig,this.tsuml2Settings.glob);
+        const declarations = tsuml2.parseProject(this.tsuml2Settings);
         const nomnomlDsl = tsuml2.getNomnomlDSL(declarations, this.tsuml2Settings);
         let svg = tsuml2.renderNomnomlSVG(nomnomlDsl);
         svg = tsuml2.postProcessSvg(svg, undefined, declarations);

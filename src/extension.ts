@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TsUML2Extension } from './tsuml2-extension';
+import { CMD_SHOW_CLASS_DIAGRAM } from './constants';
 
 
 // This method is called when your extension is activated
@@ -17,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('tsuml2-vscode.showClassDiagram',(uri: vscode.Uri) => extension.showClassDiagram(uri));
+	let disposable = vscode.commands.registerCommand(CMD_SHOW_CLASS_DIAGRAM,(uri: vscode.Uri) => extension.showClassDiagram(uri));
 
 	context.subscriptions.push(disposable);
 }

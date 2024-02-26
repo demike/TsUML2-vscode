@@ -26,6 +26,31 @@
           "group": "navigation"
         }
       ]
+    },
+    "configuration": {
+      "title": "TsUML2",
+      "properties": {
+        "tsuml2-vscode.propertyTypes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show property types in class diagram"
+        },
+        "tsuml2-vscode.modifiers": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show private, protected, public, static modifiers"
+        },
+        "tsuml2-vscode.memberAssociations": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show associations between classes, interfaces, types and their member types"
+        },
+        "tsuml2-vscode.exportedTypesOnly": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show only exported types, classes, interfaces, enums"
+        }
+      }
     }
   },
   "scripts": {
@@ -53,6 +78,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "tsuml2": "^0.14.0"
+    "tsuml2": "^0.15.0"
   }
 }
