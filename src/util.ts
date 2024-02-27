@@ -1,5 +1,9 @@
 import * as vscode from 'vscode';
-export async function createGlobFromUri(uri: vscode.Uri, options?: { excludeSpecs?: boolean } ) {
+export async function createGlobFromUri(uri: vscode.Uri | vscode.Uri[], options?: { excludeSpecs?: boolean } ): Promise<string> {
+    if(Array.isArray(uri)) {
+        const globs = await Promise.all(uri.map(u => createGlobFromUri(u, options)));
+        return `{${globs.join(',')}}`;
+    }
     const excludeSpecs = options?.excludeSpecs ?? true;
     const stat = await vscode.workspace.fs.stat(uri);
 

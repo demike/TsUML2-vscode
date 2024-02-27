@@ -18,8 +18,9 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand(CMD_SHOW_CLASS_DIAGRAM,(uri: vscode.Uri) => extension.showClassDiagram(uri));
-
+	let disposable = vscode.commands.registerCommand(CMD_SHOW_CLASS_DIAGRAM,(uri: vscode.Uri, allSelectedFiles?: vscode.Uri[]) => { 
+		return allSelectedFiles ? extension.showClassDiagram(allSelectedFiles) : extension.showClassDiagram(uri);
+	});
 	context.subscriptions.push(disposable);
 }
 

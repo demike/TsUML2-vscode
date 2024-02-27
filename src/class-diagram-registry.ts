@@ -13,19 +13,23 @@ function applyExtensionSettings(settings: TsUML2Settings) {
     });
 }
 
+function getKeyFromUris(uri: vscode.Uri | vscode.Uri[]) {
+    return Array.isArray(uri) ? uri.sort().map(u => u.toString()).join(',') : uri.toString();
+}
+
 export class ClassDiagramRegistry {
 
     classDiagrams = new Map<string,ClassDiagram>();
     constructor(private context: vscode.ExtensionContext) {
         
     }
-    public createClassDiagram(uri: vscode.Uri) {
+    public createClassDiagram(uri: vscode.Uri | vscode.Uri[]) {
 
         let settings = new TsUML2Settings();
         applyExtensionSettings(settings);
         settings.tsconfig = undefined as any;
 
-        const uriString = uri.toString();
+        const uriString = getKeyFromUris(uri);
         const classDiagram = new ClassDiagram({
             uri, 
             tsuml2Settings: settings,
@@ -35,7 +39,7 @@ export class ClassDiagramRegistry {
         this.classDiagrams.set(uriString, classDiagram);
         return classDiagram;
     }
-    public getClassDiagram(uri: vscode.Uri) {
-        return this.classDiagrams.get(uri.toString());
+    public getClassDiagram(uri: vscode.Uri| vscode.Uri[]) {
+        return this.classDiagrams.get(getKeyFromUris(uri));
     }
 }

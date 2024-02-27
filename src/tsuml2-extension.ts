@@ -7,11 +7,11 @@ export class TsUML2Extension {
     }
 
 
-    public async showClassDiagram(uri: vscode.Uri) {
-    
+    public async showClassDiagram(uri: vscode.Uri | vscode.Uri[]) {
+        if(Array.isArray(uri) && uri.length === 1) {
+            uri = uri[0];
+        }
 		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from TsUML2-vscode!');
         let classDiagram = this.classDiagramRegistry.getClassDiagram(uri);
         if(!classDiagram) {
             classDiagram = this.classDiagramRegistry.createClassDiagram(uri);

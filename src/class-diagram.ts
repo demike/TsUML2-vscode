@@ -5,14 +5,14 @@ import * as vscode from 'vscode';
 
 
 export class ClassDiagram {
-    readonly uri: vscode.Uri;
+    readonly uri: vscode.Uri | vscode.Uri[];
     private onDisposeCallback: () => void;
     private panel?: vscode.WebviewPanel;
-    private assetsPath: vscode.Uri;
+    private assetsPath: vscode.Uri ;
     private tsuml2Settings: TsUML2Settings;
     fileSystemWatcher?: vscode.FileSystemWatcher;
     //private fileSystemWatcher: vscode.FileSystemWatcher;
-    constructor(options: {uri: vscode.Uri, onDispose: () => void, assetsPath: vscode.Uri, tsuml2Settings: TsUML2Settings}) {
+    constructor(options: {uri: vscode.Uri| vscode.Uri[], onDispose: () => void, assetsPath: vscode.Uri, tsuml2Settings: TsUML2Settings}) {
         this.uri = options.uri;
         this.onDisposeCallback = options.onDispose;
         this.assetsPath = options.assetsPath;
@@ -120,7 +120,7 @@ export class ClassDiagram {
     protected createPanel() {
         const panel = vscode.window.createWebviewPanel(
             'tsuml2',
-            'Class Diagram: ' + this.uri.fsPath,
+            this.getTitle(),
             vscode.ViewColumn.One,
             {
                 enableScripts: true,
@@ -146,7 +146,7 @@ export class ClassDiagram {
 
     protected setupFileSystemWatcher(globalPattern: string) {
         vscode.workspace.onDidSaveTextDocument(($event) => {
-           if( $event.fileName.startsWith(this.uri.fsPath)) {
+           if(Array.isArray(this.uri) ? this.uri.some(uri => $event.fileName.startsWith(uri.fsPath)) : $event.fileName.startsWith(this.uri.fsPath)) {
             this.onFileChange();
            }
          });
@@ -157,6 +157,9 @@ export class ClassDiagram {
         this.show(svg);
     }
 
+    protected getTitle() {
+        return `Class Diagram: ${Array.isArray(this.uri) ? this.uri.map(uri => uri.fsPath).join(', ') : this.uri.fsPath}`;
+    }
     /*
     protected onFileDelete() {
         // delete the panel when the file / folder was deleted
