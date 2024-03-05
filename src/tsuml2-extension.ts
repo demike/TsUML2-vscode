@@ -1,9 +1,12 @@
 import * as vscode from 'vscode';
 import { ClassDiagramRegistry } from './class-diagram-registry';
+import { StatusBarSection } from './status-bar-section';
 export class TsUML2Extension {
     private classDiagramRegistry: ClassDiagramRegistry;
+    private statusBarSection: StatusBarSection;
     constructor(private readonly context: vscode.ExtensionContext) {
         this.classDiagramRegistry = new ClassDiagramRegistry(context);
+        this.statusBarSection = new StatusBarSection(context);
     }
 
 
@@ -21,5 +24,19 @@ export class TsUML2Extension {
         } else {
             classDiagram.reveal();
         }
-}
+    }
+
+    public showMermaidDSL() {
+        const classDiagram = this.classDiagramRegistry.getActiveClassDiagram();
+        if(classDiagram) {
+            classDiagram.showMermaidDSL();
+        }
+    }
+
+    public showNomnomlDSL() {
+        const classDiagram = this.classDiagramRegistry.getActiveClassDiagram();
+        if(classDiagram) {
+            classDiagram.showNomnomlDSL();
+        }
+    }
 }

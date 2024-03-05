@@ -42,4 +42,13 @@ export class ClassDiagramRegistry {
     public getClassDiagram(uri: vscode.Uri| vscode.Uri[]) {
         return this.classDiagrams.get(getKeyFromUris(uri));
     }
+
+    public getActiveClassDiagram(): ClassDiagram | undefined{
+        for(const diagram of this.classDiagrams.values()) { 
+            if(diagram.isActive()) {
+                return diagram;
+            }
+        }
+         
+    }
 }
