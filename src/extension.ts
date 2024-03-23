@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TsUML2Extension } from './tsuml2-extension';
-import { CMD_SHOW_CLASS_DIAGRAM, CMD_SHOW_MERMAID_DSL, CMD_SHOW_NOMNOML_DSL } from './constants';
+import { CMD_SHOW_CLASS_DIAGRAM, CMD_SHOW_MERMAID_DSL, CMD_SHOW_NOMNOML_DSL, CMD_SHOW_SETTINGS } from './constants';
 
 
 // This method is called when your extension is activated
@@ -25,6 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_MERMAID_DSL, () =>extension.showMermaidDSL()));
 	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_NOMNOML_DSL, () => extension.showNomnomlDSL()));
+	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_SETTINGS, () => extension.showSettings()));
 }
 
 // This method is called when your extension is deactivated

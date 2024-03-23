@@ -1,12 +1,10 @@
 import * as vscode from 'vscode';
 import { ClassDiagramRegistry } from './class-diagram-registry';
-import { StatusBarSection } from './status-bar-section';
+import { EXTENSION_NAME, PUBLISHER } from './constants';
 export class TsUML2Extension {
     private classDiagramRegistry: ClassDiagramRegistry;
-    private statusBarSection: StatusBarSection;
     constructor(private readonly context: vscode.ExtensionContext) {
         this.classDiagramRegistry = new ClassDiagramRegistry(context);
-        this.statusBarSection = new StatusBarSection(context);
     }
 
 
@@ -38,5 +36,9 @@ export class TsUML2Extension {
         if(classDiagram) {
             classDiagram.showNomnomlDSL();
         }
+    }
+
+    public showSettings() {
+        vscode.commands.executeCommand('workbench.action.openSettings', `@ext:${PUBLISHER}.${EXTENSION_NAME}`);
     }
 }

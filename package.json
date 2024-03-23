@@ -3,14 +3,18 @@
   "displayName": "TsUML2-vscode",
   "description": "TsUML2: class diagrams for your typescript code",
   "version": "0.0.1",
+  "publisher": "demike",
   "engines": {
     "vscode": "^1.84.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./out/main.js",
+  "activationEvents": [
+		"workspaceContains:*.ts",
+    "workspaceContains:*.tsx"
+	],
   "contributes": {
     "commands": [
       {
@@ -26,6 +30,10 @@
       {
         "command": "tsuml2-vscode.showNomnomlDSL",
         "title": "Export nomnoml DSL"
+      },
+      {
+        "command": "tsuml2-vscode.showTsUML2Settings",
+        "title": "TsUML2 Settings"
       }
     ],
     "menus": {
@@ -55,6 +63,9 @@
         },
         {
           "command": "tsuml2-vscode.showMermaidDSL"
+        },
+        {
+          "command": "tsuml2-vscode.showTsUML2Settings"
         }
       ]
     },
