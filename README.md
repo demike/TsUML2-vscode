@@ -12,13 +12,13 @@ TsUML2 works offline, so no third party servers are involved. It supports
 - types
 
 ### Class diagrams for single files
-![Single File Diagrams](assets/busy_cat.gif)
+![Single File Diagrams](assets/single-file-class-diagram.gif)
 
 ### Class diagrams for a folder
-![Single File Diagrams](assets/busy_cat.gif)
+![Single File Diagrams](assets/single-folder-class-diagram.gif)
 
 ### Class diagrams for multiple files and/or folders
-![Multi File Diagrams](assets/busy_cat.gif)
+![Multi File Diagrams](assets/multi-folder-class-diagram.gif)
 
 ### Navigate to defintions
 ![Navigate to Definitions](assets/busy_cat.gif)
@@ -31,6 +31,8 @@ You can export a class diagram to [Mermaid](https://mermaid.js.org/) and
 (i.e.: [embedding diagrams in github markdown](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) )
 
 Use it for further refinement of class diagrams in the mermaid / nomnoml editors.
+
+![Multi File Diagrams](assets/mermaid-export.gif)
 
 
 <!--
