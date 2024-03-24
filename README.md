@@ -1,23 +1,47 @@
 # tsuml2-vscode README
 
-This is the README for your extension "tsuml2-vscode". After writing up a brief description, we recommend including the following sections.
+Generate UML diagram for your TypeScript applications.
+And view them directly in VS Code - powered by [nomnoml](https://nomnoml.com/).
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+TsUML2 works offline, so no third party servers are involved. It supports
+- classes
+- interfaces
+- enums
+- types
 
-For example if there is an image subfolder under your extension project workspace:
+### Class diagrams for single files
+![Single File Diagrams](assets/busy_cat.gif)
 
-\!\[feature X\]\(images/feature-x.png\)
+### Class diagrams for a folder
+![Single File Diagrams](assets/busy_cat.gif)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Class diagrams for multiple files and/or folders
+![Multi File Diagrams](assets/busy_cat.gif)
 
+### Navigate to defintions
+![Navigate to Definitions](assets/busy_cat.gif)
+
+### Export to Mermaid and nomnoml DSL
+You can export a class diagram to [Mermaid](https://mermaid.js.org/) and
+[nomnoml](https://nomnoml.com/) language.
+
+> This is pretty handy for embedding (interactive) diagrams directly into markdown.
+(i.e.: [embedding diagrams in github markdown](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) )
+
+Use it for further refinement of class diagrams in the mermaid / nomnoml editors.
+
+
+<!--
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+-->
 
 ## Extension Settings
 
+<!--
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
 For example:
@@ -26,27 +50,21 @@ This extension contributes the following settings:
 
 * `myExtension.enable`: Enable/disable this extension.
 * `myExtension.thing`: Set to `blah` to do something.
+-->
 
+<!--
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
+-->
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release of TsUML2-vscode
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
+<!--
 ---
 
 ## Following extension guidelines
@@ -69,3 +87,4 @@ You can author your README using Visual Studio Code. Here are some useful editor
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+-->
