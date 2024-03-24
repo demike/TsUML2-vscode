@@ -25,3 +25,12 @@ export function getNonce() {
 	}
 	return text;
 }
+
+/**
+ * returns a path relative to the workspace
+ * @param uri 
+ * @returns 
+ */
+export function getRelativePath(uri: vscode.Uri) {
+    return vscode.workspace.asRelativePath(uri, false);
+}

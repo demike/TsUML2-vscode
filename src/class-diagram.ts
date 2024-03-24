@@ -1,5 +1,5 @@
 import * as tsuml2 from "tsuml2";
-import { createGlobFromUri, getNonce } from "./util";
+import { createGlobFromUri, getNonce, getRelativePath } from "./util";
 import { TsUML2Settings } from "tsuml2/dist/core/tsuml2-settings";
 import * as vscode from "vscode";
 import { FileDeclaration } from "tsuml2/dist/core/model";
@@ -189,8 +189,8 @@ export class ClassDiagram {
   protected getTitle() {
     return `Class Diagram: ${
       Array.isArray(this.uri)
-        ? this.uri.map((uri) => uri.fsPath).join(", ")
-        : this.uri.fsPath
+        ? this.uri.map((uri) => getRelativePath(uri)).join(", ")
+        : getRelativePath(this.uri)
     }`;
   }
 
