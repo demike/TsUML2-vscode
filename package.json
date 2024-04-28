@@ -4,6 +4,10 @@
   "description": "TsUML2: class diagrams for your typescript code",
   "version": "0.0.1",
   "publisher": "demike",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/demike/TsUML2-vscode.git"
+  },
   "engines": {
     "vscode": "^1.84.0"
   },
