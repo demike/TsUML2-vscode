@@ -21,7 +21,7 @@ TsUML2 works offline, so no third party servers are involved. It supports
 ![Multi File Diagrams](assets/multi-folder-class-diagram.gif)
 
 ### Navigate to defintions
-![Navigate to Definitions](assets/busy_cat.gif)
+![Navigate to Definitions](assets/go-to-definition.gif)
 
 ### Export to Mermaid and nomnoml DSL
 You can export a class diagram to [Mermaid](https://mermaid.js.org/) and
