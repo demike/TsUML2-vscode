@@ -4,6 +4,7 @@ import { TsUML2Settings } from "tsuml2/dist/core/tsuml2-settings";
 import * as vscode from "vscode";
 import { FileDeclaration } from "tsuml2/dist/core/model";
 import path from "path";
+import fs from "fs";
 
 export class ClassDiagram {
   readonly uri: vscode.Uri | vscode.Uri[];
@@ -29,14 +30,16 @@ export class ClassDiagram {
     // this.fileSystemWatcher.onDidChange
   }
 
-  public async generate() {
+  public async generate(forceRefresh = false) {
     // TODO: implement settings for exclude patterns
     if (!this.tsuml2Settings.glob) {
       this.tsuml2Settings.glob = await createGlobFromUri(this.uri);
       this.setupFileSystemWatcher(this.tsuml2Settings.glob);
     }
 
-    this.declarations = tsuml2.parseProject(this.tsuml2Settings);
+    if(this.declarations.length === 0 || forceRefresh) {
+      this.declarations = tsuml2.parseProject(this.tsuml2Settings);
+    }
     const nomnomlDsl = tsuml2.getNomnomlDSL(
       this.declarations,
       this.tsuml2Settings
@@ -182,7 +185,7 @@ export class ClassDiagram {
   }
 
   protected async onFileChange() {
-    const svg = await this.generate();
+    const svg = await this.generate(true);
     this.show(svg);
   }
 
@@ -192,6 +195,20 @@ export class ClassDiagram {
         ? this.uri.map((uri) => getRelativePath(uri)).join(", ")
         : getRelativePath(this.uri)
     }`;
+  }
+
+  public saveSVG() {
+    vscode.window.showSaveDialog({filters: { 'SVG': ['svg']}}).then(async fileInfos => {
+      // here you can use fs to handle data saving
+      if(fileInfos !== undefined) {
+        const svgData = await this.generate();
+      fs.writeFile(fileInfos.fsPath, svgData, (err) => {
+        if(err) {
+          console.error(err);
+        }
+      });
+      }
+  });
   }
 
   public showMermaidDSL() {

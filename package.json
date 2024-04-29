@@ -37,6 +37,10 @@
         "title": "Export nomnoml DSL"
       },
       {
+        "command": "tsuml2-vscode.saveSVG",
+        "title": "Save as SVG"
+      },
+      {
         "command": "tsuml2-vscode.showTsUML2Settings",
         "title": "TsUML2 Settings"
       }
@@ -68,6 +72,9 @@
         },
         {
           "command": "tsuml2-vscode.showMermaidDSL"
+        },
+        {
+          "command": "tsuml2-vscode.saveSVG"
         },
         {
           "command": "tsuml2-vscode.showTsUML2Settings"
@@ -133,6 +140,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "tsuml2": "^0.15.0"
+    "tsuml2": "^0.16.1"
   }
 }
