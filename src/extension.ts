@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TsUML2Extension } from './tsuml2-extension';
-import { CMD_SHOW_CLASS_DIAGRAM, CMD_SHOW_MERMAID_DSL, CMD_SHOW_NOMNOML_DSL, CMD_SHOW_SETTINGS } from './constants';
+import { CMD_SAVE_SVG, CMD_SHOW_CLASS_DIAGRAM, CMD_SHOW_MERMAID_DSL, CMD_SHOW_NOMNOML_DSL, CMD_SHOW_SETTINGS } from './constants';
 
 
 // This method is called when your extension is activated
@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "tsuml2-vscode" is now active!');
+	console.log('"tsuml2-vscode" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -25,6 +25,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_MERMAID_DSL, () =>extension.showMermaidDSL()));
 	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_NOMNOML_DSL, () => extension.showNomnomlDSL()));
+	context.subscriptions.push(vscode.commands.registerCommand(CMD_SAVE_SVG, () => extension.saveSVG()));
 	context.subscriptions.push(vscode.commands.registerCommand(CMD_SHOW_SETTINGS, () => extension.showSettings()));
 }
 

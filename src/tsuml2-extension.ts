@@ -38,6 +38,13 @@ export class TsUML2Extension {
         }
     }
 
+    public saveSVG() {
+        const classDiagram = this.classDiagramRegistry.getActiveClassDiagram();
+        if(classDiagram) {
+            classDiagram.saveSVG();
+        }
+    }
+
     public showSettings() {
         vscode.commands.executeCommand('workbench.action.openSettings', `@ext:${PUBLISHER}.${EXTENSION_NAME}`);
     }
