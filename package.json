@@ -3,7 +3,7 @@
   "displayName": "TsUML2-vscode",
   "description": "TsUML2: class diagrams for your typescript code",
   "icon": "assets/logo.png",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "demike",
   "repository": {
     "type": "git",
